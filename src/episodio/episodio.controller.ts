@@ -6,15 +6,18 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { EpisodioService } from './episodio.service';
 import { CreateEpisodioDto } from './dto/create-episodio.dto';
 import { UpdateEpisodioDto } from './dto/update-episodio.dto';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('episodio')
 export class EpisodioController {
   constructor(private readonly episodioService: EpisodioService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   create(@Body() createEpisodioDto: CreateEpisodioDto) {
     return this.episodioService.create(createEpisodioDto);
@@ -30,6 +33,7 @@ export class EpisodioController {
     return this.episodioService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -38,6 +42,7 @@ export class EpisodioController {
     return this.episodioService.update(+id, updateEpisodioDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.episodioService.remove(+id);
