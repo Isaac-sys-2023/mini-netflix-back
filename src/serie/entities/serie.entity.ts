@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Episodio } from './../../episodio/entities/episodio.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Serie {
@@ -16,4 +17,7 @@ export class Serie {
 
   @Column()
   urlPortada: string;
+
+  @OneToMany(() => Episodio, (episodio) => episodio.serie)
+  episodios: Episodio[];
 }
