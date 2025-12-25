@@ -1,11 +1,13 @@
 import { Serie } from './../../serie/entities/serie.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -23,6 +25,12 @@ export class Episodio {
 
   @Column()
   numeroCapitulo: number;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ManyToOne(() => Serie, (serie) => serie.episodios, {
     onDelete: 'CASCADE',

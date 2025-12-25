@@ -17,7 +17,7 @@ export class EpisodioService {
 
   async create(createEpisodioDto: CreateEpisodioDto) {
     const serie = await this.serieRepository.findOneBy({
-      titulo: createEpisodioDto.serieTitulo,
+      id: createEpisodioDto.serieId,
     });
 
     if (!serie) {

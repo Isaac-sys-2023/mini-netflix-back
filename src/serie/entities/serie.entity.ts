@@ -1,5 +1,12 @@
 import { Episodio } from './../../episodio/entities/episodio.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Serie {
@@ -17,6 +24,12 @@ export class Serie {
 
   @Column()
   urlPortada: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @OneToMany(() => Episodio, (episodio) => episodio.serie)
   episodios: Episodio[];

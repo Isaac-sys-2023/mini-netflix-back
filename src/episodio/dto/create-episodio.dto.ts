@@ -22,12 +22,17 @@ export class CreateEpisodioDto {
   })
   numeroCapitulo: number;
 
-  @IsString({
-    message:
-      'El titulo de la serie a la que pertenece el episodio debe ser una cadena de texto',
-  })
+  //He decidido usar el ID de la serie en lugar del título para evitar problemas con series que puedan tener el mismo título o si la serie llega a editarse y cambia su titulo
+  @Type(() => Number)
+  @IsNumber(
+    {},
+    {
+      message:
+        'El ID de la serie a la que pertenece el episodio debe ser un número',
+    },
+  )
   @IsNotEmpty({
-    message: 'El título de la serie es obligatorio y no debe estar vacío',
+    message: 'El ID de la serie es obligatorio y no debe estar vacío',
   })
-  serieTitulo: string;
+  serieId: number;
 }
