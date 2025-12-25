@@ -1,26 +1,63 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSerieDto } from './dto/create-serie.dto';
 import { UpdateSerieDto } from './dto/update-serie.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Serie } from './entities/serie.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class SerieService {
-  create(createSerieDto: CreateSerieDto) {
-    return 'This action adds a new serie';
+  constructor(
+    @InjectRepository(Serie)
+    private readonly serieRepository: Repository<Serie>,
+  ) {}
+
+  async create(createSerieDto: CreateSerieDto) {
+    const newSerie = this.serieRepository.create(createSerieDto);
+    return await this.serieRepository.save(newSerie);
   }
 
-  findAll() {
-    return `This action returns all serie`;
+  async findAll() {
+    return await this.serieRepository
+      .createQueryBuilder('serie')
+      .leftJoinAndSelect('serie.episodios', 'episodio')
+      .select([
+        'serie.id',
+        'serie.titulo',
+        'serie.genero',
+        'serie.sinopsis',
+        'serie.urlPortada',
+        'episodio.titulo',
+        'episodio.numeroCapitulo',
+        'episodio.duracion',
+      ])
+      .getMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} serie`;
+  async findOne(id: number) {
+    return await this.serieRepository
+      .createQueryBuilder('serie')
+      .leftJoinAndSelect('serie.episodios', 'episodio')
+      .select([
+        'serie.id',
+        'serie.titulo',
+        'serie.genero',
+        'serie.sinopsis',
+        'serie.urlPortada',
+        'episodio.titulo',
+        'episodio.numeroCapitulo',
+        'episodio.duracion',
+      ])
+      .where('serie.id = :id', { id })
+      .getOne();
   }
 
-  update(id: number, updateSerieDto: UpdateSerieDto) {
-    return `This action updates a #${id} serie`;
+  async update(id: number, updateSerieDto: UpdateSerieDto) {
+    await this.serieRepository.update(id, updateSerieDto);
+    return await this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} serie`;
+  async remove(id: number) {
+    return await this.serieRepository.delete(id);
   }
 }
