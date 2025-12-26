@@ -1,3 +1,9 @@
+# Examen Práctico: Backend Mini-Netflix
+
+<p align=center>
+  Usando el framework de NestJS
+</p>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -5,94 +11,208 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Objetivo
 
-## Description
+Desarrollar y desplegar una API RESTful escalable utilizando NestJS, PostgreSQL y TypeORM.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tecnologías utilizadas
 
-## Project setup
+<p> <a href="https://nestjs.com/" target="blank"> <img src="https://nestjs.com/img/logo-small.svg" width="20" alt="NestJS Logo" /> </a> NestJS / Nest CLI </p>
+<p> <a href="https://typeorm.io/" target="blank"> <img src="https://raw.githubusercontent.com/typeorm/typeorm/master/resources/logo_big.png" width="20" alt="TypeORM Logo" /> </a> TypeORM </p>
+<p> <a href="https://jwt.io/" target="blank"> <img src="https://jwt.io/img/logo-asset.svg" width="20" alt="JWT Logo" /> </a> JWT (Autenticación) </p>
+<p> <a href="https://www.postgresql.org/" target="blank"> <img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="20" alt="PostgreSQL Logo" /> </a> PostgreSQL </p>
+<p> <a href="https://www.docker.com/" target="blank"> <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" width="20" alt="Docker Logo" /> </a> Docker </p>
+<p> <a href="https://git-scm.com/" target="blank"> <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="20" alt="Git Logo" /> </a> Git </p>
+
+## Ejecución del proyecto
+
+### El proyecto se encuentra desplegado en Render en el siguiente enlace:
+
+https://mini-netflix-back.onrender.com
+
+### Para hacer correr el proyecto localmente se requiere tener instalado:
+
+- <p>
+    <a href="https://git-scm.com/" target="blank">
+      <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="20" alt="Git Logo" />
+    </a>
+    Git
+  </p>
+
+- <p>
+    <a href="https://nodejs.org/" target="blank">
+      <img src="https://nodejs.org/static/images/logo.svg" width="20" alt="Node.js Logo" />
+    </a>
+    Node.js (LTS)
+  </p>
+
+- <p> <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="20" alt="Nest Logo" /></a> Nest CLI </p>
+
+- <p>
+    <a href="https://www.docker.com/" target="blank">
+      <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" width="20" alt="Docker Logo" />
+    </a>
+    Docker
+  </p>
+
+- <p>
+    <a href="https://www.postgresql.org/" target="blank">
+      <img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="20" alt="PostgreSQL Logo" />
+    </a>
+    PostgreSQL
+  </p>
+
+### Paso 1. Clone el proyecto:
 
 ```bash
+$ git clone https://github.com/Isaac-sys-2023/mini-netflix-back.git
+```
+
+### Paso 2. Instale las dependencias de node para que corra el proyecto:
+
+```bash
+$ cd mini-netflix-back
 $ npm install
 ```
 
-## Compile and run the project
+### Paso 3. Configure su .env con sus propias variables de entorno
 
 ```bash
-# development
-$ npm run start
+$ cp .env.example .env
+```
 
-# watch mode
+```.env
+POSTGRES_HOST=your_host
+POSTGRES_PORT=your_port
+POSTGRES_USERNAME=your_username
+POSTGRES_PASSWORD=your_password
+POSTGRES_DATABASE=your_database
+POSTGRES_SSL=false
+
+JWT_SECRET=yourSecretKeyHere
+```
+
+**Nota:** Si usara docker para correr el proyecto configure tambien el docker-compose.yml para que coincida con el .env y ejecute en la terminal
+
+```bash
+$ docker compose up -d
+```
+
+### Paso 4. Inicialice el proyecto:
+
+```bash
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Run tests
+Luego diríjase a http://localhost:3000/ donde debería de ver el texto "Hello World".
 
-```bash
-# unit tests
-$ npm run test
+## Entidades
 
-# e2e tests
-$ npm run test:e2e
+### Users
 
-# test coverage
-$ npm run test:cov
+Para el acceso de algunos endpoints que estan protegidos por autenticacion y autorizacion debe crearse un usuario y luego logearse con este, para ello:
+
+En Postman (o herramientas similares):
+
+Request POST a http://localhost:3000/auth/register
+
+```.json
+{
+  "username": "your_username"
+  "email": "your_email@valido.com"
+  "password": "su_contraseña_Super_Segura"
+}
 ```
 
-## Deployment
+Luego hacer un request POST a http://localhost:3000/auth/login y copiar el token que este le generará:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```.json
+{
+  "email": "your_email@valido.com"
+  "password": "su_contraseña_Super_Segura"
+}
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Su respuesta probablemente será algo como:
 
-## Resources
+```.json
+{
+  "token": "ey.....algo"
+}
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+Copie ese token y guardelo para más despues.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Series
 
-## Support
+La entidad de series tiene los siguientes endpoints:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**Obtener todas las series y sus episodios:**<br>GET http://localhost:3000/serie
 
-## Stay in touch
+**Obtener una serie (por id) y sus episodios:**<br>GET http://localhost:3000/serie/{id}
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Crear una serie:**<br>POST http://localhost:3000/serie<br>Requiere el token de autenticacion y enviar el siguiente body
 
-## License
+```.json
+{
+  "titulo": "titulo_de_la_serie",
+  "genero": "genero_de_la_serie",
+  "sinopsis": "sinopsis_de_la_serie",
+  "urlPortada": "url_de_imagen_de_portada"
+}
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```
+
+**Actualizar/Editar una serie:**<br>PATCH http://localhost:3000/serie/{id}<br>Requiere el token de autenticacion y enviar el siguiente body parcialmente (es decir no necesariamente debe enviar todos los campos con enviar 1 o más de estos basta)
+
+```.json
+{
+  "titulo": "titulo_de_la_serie",
+  "genero": "genero_de_la_serie",
+  "sinopsis": "sinopsis_de_la_serie",
+  "urlPortada": "url_de_imagen_de_portada"
+}
+
+```
+
+**Eliminar una serie:**<br>DELETE http://localhost:3000/serie/{id}<br>Requiere el token de autenticacion.
+
+### Episodios
+
+Los episodios estan relacionados a series mediante una relacion de uno a muchos, es decir, muchos episodios son de una serie, pero una serie tiene muchos episodios.
+
+La entidad de episodios tiene los siguientes endpoints:
+
+**Obtener todos los episodios:**<br>GET http://localhost:3000/episodio
+
+**Obtener un episodio (por id) y sus episodios:**<br>GET http://localhost:3000/episodio/{id}
+
+**Crear un episodio:**<br>POST http://localhost:3000/episodio<br>Requiere el token de autenticacion y enviar el siguiente body
+
+```.json
+{
+  "titulo": "titulo_de_la_episodio",
+  "duracion": 0, (En minutos)
+  "numeroCapitulo": 0,
+  "serieId": 0 (id numerico de la serie a la que pertenece el episodio)
+}
+
+```
+
+**Nota:** Elimine todo lo que esta en parentesis a la hora de copiar el json.
+
+**Actualizar/Editar un episodio:**<br>PATCH http://localhost:3000/episodio/{id}<br>Requiere el token de autenticacion y enviar el siguiente body parcialmente (es decir no necesariamente debe enviar todos los campos con enviar 1 o más de estos basta)
+
+```.json
+{
+  "titulo": "titulo_de_la_episodio",
+  "duracion": 0, (En minutos)
+  "numeroCapitulo": 0,
+  "serieId": 0 (id numerico de la serie a la que pertenece el episodio)
+}
+
+```
+
+**Nota:** Elimine todo lo que esta en parentesis a la hora de copiar el json.
+
+**Eliminar un episodio:**<br>DELETE http://localhost:3000/episodio/{id}<br>Requiere el token de autenticacion.
